@@ -1,0 +1,33 @@
+{
+  "name": "healthcare-appointment-manager",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Healthcare Appointment & Follow-up Manager",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:worker": "npm --prefix workers run dev",
+    "build": "npm run build:backend && npm run build:frontend && npm run build:worker",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:worker": "npm --prefix workers run build",
+    "test": "npm run test:backend",
+    "test:backend": "npm --prefix backend test",
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "tsx": "^4.23.12"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "bcryptjs": "^3.0.3",
+    "pg": "^8.23.0",
+    "prisma": "^7.9.1"
+  }
+}
