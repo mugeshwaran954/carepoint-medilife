@@ -57,6 +57,11 @@ export const ModelName = {
   DoctorAvailability: 'DoctorAvailability',
   Appointment: 'Appointment',
   PreVisitSummary: 'PreVisitSummary',
+  ClinicalNote: 'ClinicalNote',
+  Prescription: 'Prescription',
+  PrescriptionItem: 'PrescriptionItem',
+  PostVisitSummary: 'PostVisitSummary',
+  DoctorLeave: 'DoctorLeave',
   FollowUp: 'FollowUp',
   Reminder: 'Reminder',
   CalendarConnection: 'CalendarConnection',
@@ -119,6 +124,7 @@ export const DoctorProfileScalarFieldEnum = {
   qualification: 'qualification',
   experienceYears: 'experienceYears',
   consultationFee: 'consultationFee',
+  slotDuration: 'slotDuration',
   bio: 'bio',
   isAvailable: 'isAvailable',
   createdAt: 'createdAt',
@@ -176,6 +182,71 @@ export const PreVisitSummaryScalarFieldEnum = {
 } as const
 
 export type PreVisitSummaryScalarFieldEnum = (typeof PreVisitSummaryScalarFieldEnum)[keyof typeof PreVisitSummaryScalarFieldEnum]
+
+
+export const ClinicalNoteScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  diagnosis: 'diagnosis',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClinicalNoteScalarFieldEnum = (typeof ClinicalNoteScalarFieldEnum)[keyof typeof ClinicalNoteScalarFieldEnum]
+
+
+export const PrescriptionScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrescriptionScalarFieldEnum = (typeof PrescriptionScalarFieldEnum)[keyof typeof PrescriptionScalarFieldEnum]
+
+
+export const PrescriptionItemScalarFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  medicationName: 'medicationName',
+  dosage: 'dosage',
+  frequency: 'frequency',
+  duration: 'duration',
+  instructions: 'instructions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrescriptionItemScalarFieldEnum = (typeof PrescriptionItemScalarFieldEnum)[keyof typeof PrescriptionItemScalarFieldEnum]
+
+
+export const PostVisitSummaryScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  patientSummary: 'patientSummary',
+  medicationSchedule: 'medicationSchedule',
+  followUpSteps: 'followUpSteps',
+  generatedBy: 'generatedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostVisitSummaryScalarFieldEnum = (typeof PostVisitSummaryScalarFieldEnum)[keyof typeof PostVisitSummaryScalarFieldEnum]
+
+
+export const DoctorLeaveScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DoctorLeaveScalarFieldEnum = (typeof DoctorLeaveScalarFieldEnum)[keyof typeof DoctorLeaveScalarFieldEnum]
 
 
 export const FollowUpScalarFieldEnum = {

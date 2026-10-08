@@ -119,6 +119,7 @@ model DoctorProfile {
   qualification   String?
   experienceYears Int?
   consultationFee Decimal? @db.Decimal(10, 2)
+  slotDuration    Int      @default(30)
   bio             String?
   isAvailable     Boolean  @default(true)
 
@@ -128,6 +129,7 @@ model DoctorProfile {
   user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   appointments Appointment[]        @relation("DoctorAppointments")
   availability DoctorAvailability[]
+  leaves       DoctorLeave[]
 
   @@index([specialization])
   @@index([isAvailable])
@@ -178,6 +180,9 @@ model Appointment {
   followUps       FollowUp[]
   reminders       Reminder[]
   preVisitSummary PreVisitSummary?
+  clinicalNote    ClinicalNote?
+  prescription    Prescription?
+  postVisitSummary PostVisitSummary?
 
   @@unique([doctorId, startTime])
   @@index([patientId, startTime])
@@ -203,10 +208,78 @@ model PreVisitSummary {
   createdAt          DateTime @default(now()) @db.Timestamptz(3)
   updatedAt          DateTime @updatedAt @db.Timestamptz(3)
 
-    appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
 
   @@index([urgencyLevel])
   @@index([createdAt])
+}
+
+model ClinicalNote {
+  id            String   @id @default(uuid()) @db.Uuid
+  appointmentId String   @unique @db.Uuid
+  diagnosis     String?
+  notes         String
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+
+  appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+}
+
+model Prescription {
+  id            String             @id @default(uuid()) @db.Uuid
+  appointmentId String             @unique @db.Uuid
+  notes         String?
+  createdAt     DateTime           @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime           @updatedAt @db.Timestamptz(3)
+
+  appointment Appointment        @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  items       PrescriptionItem[]
+}
+
+model PrescriptionItem {
+  id             String       @id @default(uuid()) @db.Uuid
+  prescriptionId String       @db.Uuid
+  medicationName String
+  dosage         String
+  frequency      String
+  duration       String
+  instructions   String?
+
+  createdAt      DateTime     @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime     @updatedAt @db.Timestamptz(3)
+
+  prescription Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  @@index([prescriptionId])
+}
+
+model PostVisitSummary {
+  id                 String   @id @default(uuid()) @db.Uuid
+  appointmentId      String   @unique @db.Uuid
+  patientSummary     String
+  medicationSchedule Json
+  followUpSteps      Json
+  generatedBy        String   @default("LLM")
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(3)
+
+  appointment Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+}
+
+model DoctorLeave {
+  id        String   @id @default(uuid()) @db.Uuid
+  doctorId  String   @db.Uuid
+  startDate DateTime @db.Date
+  endDate   DateTime @db.Date
+  reason    String?
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  doctor DoctorProfile @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@index([doctorId, startDate, endDate])
 }
 
 model FollowUp {

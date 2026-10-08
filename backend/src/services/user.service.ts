@@ -13,7 +13,18 @@ export const getUserProfile = async (userId: string) => {
       role: true,
       phone: true,
       createdAt: true,
-      updatedAt: true
+      updatedAt: true,
+      patientProfile: {
+        select: {
+          id: true
+        }
+      },
+      doctorProfile: {
+        select: {
+          id: true,
+          specialization: true
+        }
+      }
     }
   });
 };

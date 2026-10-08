@@ -12,6 +12,8 @@ import appointmentRoutes from "./routes/appointment.routes.js";
 import followUpRoutes from "./routes/followUp.routes.js";
 import reminderRoutes from "./routes/reminder.routes.js";
 import preVisitRoutes from "./routes/preVisit.routes.js";
+import postVisitRoutes from "./routes/postVisit.routes.js";
+import calendarRoutes from "./routes/calendar.routes.js";
 const app = express();
 
 app.use(helmet());
@@ -54,6 +56,14 @@ app.use(
 app.use(
   "/api/v1/pre-visit-summaries",
   preVisitRoutes
+);
+app.use(
+  "/api/v1/post-visit-summaries",
+  postVisitRoutes
+);
+app.use(
+  "/api/v1/calendar",
+  calendarRoutes
 );
 
 export default app;

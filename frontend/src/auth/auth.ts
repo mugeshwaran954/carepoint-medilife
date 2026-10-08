@@ -5,8 +5,34 @@ import {
 
 import type {
   LoginResponse,
+  RegisterInput,
   User
 } from "../types";
+
+export async function register(
+  data: RegisterInput
+): Promise<User> {
+  const response = await post<LoginResponse>(
+    "/auth/register",
+    data
+  );
+
+  const accessToken = response.data?.accessToken;
+  if (!accessToken) {
+    throw new Error(
+      "Registration succeeded but no access token was returned"
+    );
+  }
+
+  localStorage.setItem("accessToken", accessToken);
+
+  if (response.data?.refreshToken) {
+    localStorage.setItem("refreshToken", response.data.refreshToken);
+  }
+
+  const user = await getCurrentUser();
+  return user;
+}
 
 export async function login(
   email: string,

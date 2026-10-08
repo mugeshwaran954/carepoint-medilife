@@ -31,5 +31,19 @@ export const env = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN ?? "1d",
 
   frontendUrl:
-    process.env.FRONTEND_URL ?? "http://localhost:5173"
+    process.env.FRONTEND_URL ?? "http://localhost:5173",
+
+  llmProvider: process.env.LLM_PROVIDER,
+  llmApiKey: process.env.LLM_API_KEY,
+  llmModel: process.env.LLM_MODEL,
+
+  smtpHost: process.env.SMTP_HOST,
+  smtpPort: process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined,
+  smtpUser: process.env.SMTP_USER,
+  smtpPassword: process.env.SMTP_PASSWORD,
+  smtpFrom: process.env.SMTP_FROM || "noreply@healthcare.com",
+
+  googleClientId: process.env.GOOGLE_CLIENT_ID,
+  googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || "http://localhost:5000/api/v1/calendar/google/callback"
 };

@@ -12,6 +12,26 @@ export interface User {
   phone?: string;
   createdAt?: string;
   updatedAt?: string;
+  doctorProfile?: {
+    id: string;
+    specialization?: string;
+  };
+  patientProfile?: {
+    id: string;
+  };
+}
+
+export interface RegisterInput {
+  fullName?: string;
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  password: string;
+  role?: UserRole;
+  phone?: string;
+  gender?: "MALE" | "FEMALE" | "OTHER" | "PREFER_NOT_TO_SAY";
+  dateOfBirth?: string;
+  age?: number;
 }
 
 export interface LoginResponse {

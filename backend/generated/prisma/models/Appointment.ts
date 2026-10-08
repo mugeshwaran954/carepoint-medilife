@@ -252,6 +252,9 @@ export type AppointmentWhereInput = {
   followUps?: Prisma.FollowUpListRelationFilter
   reminders?: Prisma.ReminderListRelationFilter
   preVisitSummary?: Prisma.XOR<Prisma.PreVisitSummaryNullableScalarRelationFilter, Prisma.PreVisitSummaryWhereInput> | null
+  clinicalNote?: Prisma.XOR<Prisma.ClinicalNoteNullableScalarRelationFilter, Prisma.ClinicalNoteWhereInput> | null
+  prescription?: Prisma.XOR<Prisma.PrescriptionNullableScalarRelationFilter, Prisma.PrescriptionWhereInput> | null
+  postVisitSummary?: Prisma.XOR<Prisma.PostVisitSummaryNullableScalarRelationFilter, Prisma.PostVisitSummaryWhereInput> | null
 }
 
 export type AppointmentOrderByWithRelationInput = {
@@ -274,6 +277,9 @@ export type AppointmentOrderByWithRelationInput = {
   followUps?: Prisma.FollowUpOrderByRelationAggregateInput
   reminders?: Prisma.ReminderOrderByRelationAggregateInput
   preVisitSummary?: Prisma.PreVisitSummaryOrderByWithRelationInput
+  clinicalNote?: Prisma.ClinicalNoteOrderByWithRelationInput
+  prescription?: Prisma.PrescriptionOrderByWithRelationInput
+  postVisitSummary?: Prisma.PostVisitSummaryOrderByWithRelationInput
 }
 
 export type AppointmentWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +306,9 @@ export type AppointmentWhereUniqueInput = Prisma.AtLeast<{
   followUps?: Prisma.FollowUpListRelationFilter
   reminders?: Prisma.ReminderListRelationFilter
   preVisitSummary?: Prisma.XOR<Prisma.PreVisitSummaryNullableScalarRelationFilter, Prisma.PreVisitSummaryWhereInput> | null
+  clinicalNote?: Prisma.XOR<Prisma.ClinicalNoteNullableScalarRelationFilter, Prisma.ClinicalNoteWhereInput> | null
+  prescription?: Prisma.XOR<Prisma.PrescriptionNullableScalarRelationFilter, Prisma.PrescriptionWhereInput> | null
+  postVisitSummary?: Prisma.XOR<Prisma.PostVisitSummaryNullableScalarRelationFilter, Prisma.PostVisitSummaryWhereInput> | null
 }, "id" | "doctorId_startTime">
 
 export type AppointmentOrderByWithAggregationInput = {
@@ -357,6 +366,9 @@ export type AppointmentCreateInput = {
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateInput = {
@@ -376,6 +388,9 @@ export type AppointmentUncheckedCreateInput = {
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUpdateInput = {
@@ -395,6 +410,9 @@ export type AppointmentUpdateInput = {
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateInput = {
@@ -414,6 +432,9 @@ export type AppointmentUncheckedUpdateInput = {
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentCreateManyInput = {
@@ -682,6 +703,48 @@ export type AppointmentUpdateOneRequiredWithoutPreVisitSummaryNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AppointmentUpdateToOneWithWhereWithoutPreVisitSummaryInput, Prisma.AppointmentUpdateWithoutPreVisitSummaryInput>, Prisma.AppointmentUncheckedUpdateWithoutPreVisitSummaryInput>
 }
 
+export type AppointmentCreateNestedOneWithoutClinicalNoteInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedCreateWithoutClinicalNoteInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutClinicalNoteInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+}
+
+export type AppointmentUpdateOneRequiredWithoutClinicalNoteNestedInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedCreateWithoutClinicalNoteInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutClinicalNoteInput
+  upsert?: Prisma.AppointmentUpsertWithoutClinicalNoteInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AppointmentUpdateToOneWithWhereWithoutClinicalNoteInput, Prisma.AppointmentUpdateWithoutClinicalNoteInput>, Prisma.AppointmentUncheckedUpdateWithoutClinicalNoteInput>
+}
+
+export type AppointmentCreateNestedOneWithoutPrescriptionInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutPrescriptionInput, Prisma.AppointmentUncheckedCreateWithoutPrescriptionInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutPrescriptionInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+}
+
+export type AppointmentUpdateOneRequiredWithoutPrescriptionNestedInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutPrescriptionInput, Prisma.AppointmentUncheckedCreateWithoutPrescriptionInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutPrescriptionInput
+  upsert?: Prisma.AppointmentUpsertWithoutPrescriptionInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AppointmentUpdateToOneWithWhereWithoutPrescriptionInput, Prisma.AppointmentUpdateWithoutPrescriptionInput>, Prisma.AppointmentUncheckedUpdateWithoutPrescriptionInput>
+}
+
+export type AppointmentCreateNestedOneWithoutPostVisitSummaryInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedCreateWithoutPostVisitSummaryInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutPostVisitSummaryInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+}
+
+export type AppointmentUpdateOneRequiredWithoutPostVisitSummaryNestedInput = {
+  create?: Prisma.XOR<Prisma.AppointmentCreateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedCreateWithoutPostVisitSummaryInput>
+  connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutPostVisitSummaryInput
+  upsert?: Prisma.AppointmentUpsertWithoutPostVisitSummaryInput
+  connect?: Prisma.AppointmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AppointmentUpdateToOneWithWhereWithoutPostVisitSummaryInput, Prisma.AppointmentUpdateWithoutPostVisitSummaryInput>, Prisma.AppointmentUncheckedUpdateWithoutPostVisitSummaryInput>
+}
+
 export type AppointmentCreateNestedOneWithoutFollowUpsInput = {
   create?: Prisma.XOR<Prisma.AppointmentCreateWithoutFollowUpsInput, Prisma.AppointmentUncheckedCreateWithoutFollowUpsInput>
   connectOrCreate?: Prisma.AppointmentCreateOrConnectWithoutFollowUpsInput
@@ -728,6 +791,9 @@ export type AppointmentCreateWithoutCreatedByInput = {
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutCreatedByInput = {
@@ -746,6 +812,9 @@ export type AppointmentUncheckedCreateWithoutCreatedByInput = {
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutCreatedByInput = {
@@ -809,6 +878,9 @@ export type AppointmentCreateWithoutPatientInput = {
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutPatientInput = {
@@ -827,6 +899,9 @@ export type AppointmentUncheckedCreateWithoutPatientInput = {
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutPatientInput = {
@@ -871,6 +946,9 @@ export type AppointmentCreateWithoutDoctorInput = {
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutDoctorInput = {
@@ -889,6 +967,9 @@ export type AppointmentUncheckedCreateWithoutDoctorInput = {
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutDoctorInput = {
@@ -933,6 +1014,9 @@ export type AppointmentCreateWithoutPreVisitSummaryInput = {
   createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutPreVisitSummaryInput = {
@@ -951,6 +1035,9 @@ export type AppointmentUncheckedCreateWithoutPreVisitSummaryInput = {
   updatedAt?: Date | string
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutPreVisitSummaryInput = {
@@ -985,6 +1072,9 @@ export type AppointmentUpdateWithoutPreVisitSummaryInput = {
   createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutPreVisitSummaryInput = {
@@ -1003,6 +1093,309 @@ export type AppointmentUncheckedUpdateWithoutPreVisitSummaryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentCreateWithoutClinicalNoteInput = {
+  id?: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  patient: Prisma.PatientProfileCreateNestedOneWithoutAppointmentsInput
+  doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput
+  createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
+  followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentUncheckedCreateWithoutClinicalNoteInput = {
+  id?: string
+  patientId: string
+  doctorId: string
+  createdById: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentCreateOrConnectWithoutClinicalNoteInput = {
+  where: Prisma.AppointmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedCreateWithoutClinicalNoteInput>
+}
+
+export type AppointmentUpsertWithoutClinicalNoteInput = {
+  update: Prisma.XOR<Prisma.AppointmentUpdateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedUpdateWithoutClinicalNoteInput>
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedCreateWithoutClinicalNoteInput>
+  where?: Prisma.AppointmentWhereInput
+}
+
+export type AppointmentUpdateToOneWithWhereWithoutClinicalNoteInput = {
+  where?: Prisma.AppointmentWhereInput
+  data: Prisma.XOR<Prisma.AppointmentUpdateWithoutClinicalNoteInput, Prisma.AppointmentUncheckedUpdateWithoutClinicalNoteInput>
+}
+
+export type AppointmentUpdateWithoutClinicalNoteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  patient?: Prisma.PatientProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
+  followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentUncheckedUpdateWithoutClinicalNoteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  patientId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentCreateWithoutPrescriptionInput = {
+  id?: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  patient: Prisma.PatientProfileCreateNestedOneWithoutAppointmentsInput
+  doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput
+  createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
+  followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentUncheckedCreateWithoutPrescriptionInput = {
+  id?: string
+  patientId: string
+  doctorId: string
+  createdById: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentCreateOrConnectWithoutPrescriptionInput = {
+  where: Prisma.AppointmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutPrescriptionInput, Prisma.AppointmentUncheckedCreateWithoutPrescriptionInput>
+}
+
+export type AppointmentUpsertWithoutPrescriptionInput = {
+  update: Prisma.XOR<Prisma.AppointmentUpdateWithoutPrescriptionInput, Prisma.AppointmentUncheckedUpdateWithoutPrescriptionInput>
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutPrescriptionInput, Prisma.AppointmentUncheckedCreateWithoutPrescriptionInput>
+  where?: Prisma.AppointmentWhereInput
+}
+
+export type AppointmentUpdateToOneWithWhereWithoutPrescriptionInput = {
+  where?: Prisma.AppointmentWhereInput
+  data: Prisma.XOR<Prisma.AppointmentUpdateWithoutPrescriptionInput, Prisma.AppointmentUncheckedUpdateWithoutPrescriptionInput>
+}
+
+export type AppointmentUpdateWithoutPrescriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  patient?: Prisma.PatientProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
+  followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentUncheckedUpdateWithoutPrescriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  patientId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentCreateWithoutPostVisitSummaryInput = {
+  id?: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  patient: Prisma.PatientProfileCreateNestedOneWithoutAppointmentsInput
+  doctor: Prisma.DoctorProfileCreateNestedOneWithoutAppointmentsInput
+  createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
+  followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentUncheckedCreateWithoutPostVisitSummaryInput = {
+  id?: string
+  patientId: string
+  doctorId: string
+  createdById: string
+  startTime: Date | string
+  endTime: Date | string
+  type?: $Enums.AppointmentType
+  status?: $Enums.AppointmentStatus
+  reason?: string | null
+  notes?: string | null
+  cancellationReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
+  reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+}
+
+export type AppointmentCreateOrConnectWithoutPostVisitSummaryInput = {
+  where: Prisma.AppointmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedCreateWithoutPostVisitSummaryInput>
+}
+
+export type AppointmentUpsertWithoutPostVisitSummaryInput = {
+  update: Prisma.XOR<Prisma.AppointmentUpdateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedUpdateWithoutPostVisitSummaryInput>
+  create: Prisma.XOR<Prisma.AppointmentCreateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedCreateWithoutPostVisitSummaryInput>
+  where?: Prisma.AppointmentWhereInput
+}
+
+export type AppointmentUpdateToOneWithWhereWithoutPostVisitSummaryInput = {
+  where?: Prisma.AppointmentWhereInput
+  data: Prisma.XOR<Prisma.AppointmentUpdateWithoutPostVisitSummaryInput, Prisma.AppointmentUncheckedUpdateWithoutPostVisitSummaryInput>
+}
+
+export type AppointmentUpdateWithoutPostVisitSummaryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  patient?: Prisma.PatientProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutAppointmentsNestedInput
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
+  followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+}
+
+export type AppointmentUncheckedUpdateWithoutPostVisitSummaryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  patientId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdById?: Prisma.StringFieldUpdateOperationsInput | string
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumAppointmentTypeFieldUpdateOperationsInput | $Enums.AppointmentType
+  status?: Prisma.EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
+  reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
+  preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentCreateWithoutFollowUpsInput = {
@@ -1021,6 +1414,9 @@ export type AppointmentCreateWithoutFollowUpsInput = {
   createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
   reminders?: Prisma.ReminderCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutFollowUpsInput = {
@@ -1039,6 +1435,9 @@ export type AppointmentUncheckedCreateWithoutFollowUpsInput = {
   updatedAt?: Date | string
   reminders?: Prisma.ReminderUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutFollowUpsInput = {
@@ -1073,6 +1472,9 @@ export type AppointmentUpdateWithoutFollowUpsInput = {
   createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutFollowUpsInput = {
@@ -1091,6 +1493,9 @@ export type AppointmentUncheckedUpdateWithoutFollowUpsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentCreateWithoutRemindersInput = {
@@ -1109,6 +1514,9 @@ export type AppointmentCreateWithoutRemindersInput = {
   createdBy: Prisma.UserCreateNestedOneWithoutCreatedAppointmentsInput
   followUps?: Prisma.FollowUpCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentUncheckedCreateWithoutRemindersInput = {
@@ -1127,6 +1535,9 @@ export type AppointmentUncheckedCreateWithoutRemindersInput = {
   updatedAt?: Date | string
   followUps?: Prisma.FollowUpUncheckedCreateNestedManyWithoutAppointmentInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedCreateNestedOneWithoutAppointmentInput
+  prescription?: Prisma.PrescriptionUncheckedCreateNestedOneWithoutAppointmentInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedCreateNestedOneWithoutAppointmentInput
 }
 
 export type AppointmentCreateOrConnectWithoutRemindersInput = {
@@ -1161,6 +1572,9 @@ export type AppointmentUpdateWithoutRemindersInput = {
   createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedAppointmentsNestedInput
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutRemindersInput = {
@@ -1179,6 +1593,9 @@ export type AppointmentUncheckedUpdateWithoutRemindersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentCreateManyCreatedByInput = {
@@ -1212,6 +1629,9 @@ export type AppointmentUpdateWithoutCreatedByInput = {
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutCreatedByInput = {
@@ -1230,6 +1650,9 @@ export type AppointmentUncheckedUpdateWithoutCreatedByInput = {
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateManyWithoutCreatedByInput = {
@@ -1278,6 +1701,9 @@ export type AppointmentUpdateWithoutPatientInput = {
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutPatientInput = {
@@ -1296,6 +1722,9 @@ export type AppointmentUncheckedUpdateWithoutPatientInput = {
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateManyWithoutPatientInput = {
@@ -1344,6 +1773,9 @@ export type AppointmentUpdateWithoutDoctorInput = {
   followUps?: Prisma.FollowUpUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateWithoutDoctorInput = {
@@ -1362,6 +1794,9 @@ export type AppointmentUncheckedUpdateWithoutDoctorInput = {
   followUps?: Prisma.FollowUpUncheckedUpdateManyWithoutAppointmentNestedInput
   reminders?: Prisma.ReminderUncheckedUpdateManyWithoutAppointmentNestedInput
   preVisitSummary?: Prisma.PreVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
+  clinicalNote?: Prisma.ClinicalNoteUncheckedUpdateOneWithoutAppointmentNestedInput
+  prescription?: Prisma.PrescriptionUncheckedUpdateOneWithoutAppointmentNestedInput
+  postVisitSummary?: Prisma.PostVisitSummaryUncheckedUpdateOneWithoutAppointmentNestedInput
 }
 
 export type AppointmentUncheckedUpdateManyWithoutDoctorInput = {
@@ -1439,6 +1874,9 @@ export type AppointmentSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   followUps?: boolean | Prisma.Appointment$followUpsArgs<ExtArgs>
   reminders?: boolean | Prisma.Appointment$remindersArgs<ExtArgs>
   preVisitSummary?: boolean | Prisma.Appointment$preVisitSummaryArgs<ExtArgs>
+  clinicalNote?: boolean | Prisma.Appointment$clinicalNoteArgs<ExtArgs>
+  prescription?: boolean | Prisma.Appointment$prescriptionArgs<ExtArgs>
+  postVisitSummary?: boolean | Prisma.Appointment$postVisitSummaryArgs<ExtArgs>
   _count?: boolean | Prisma.AppointmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["appointment"]>
 
@@ -1504,6 +1942,9 @@ export type AppointmentInclude<ExtArgs extends runtime.Types.Extensions.Internal
   followUps?: boolean | Prisma.Appointment$followUpsArgs<ExtArgs>
   reminders?: boolean | Prisma.Appointment$remindersArgs<ExtArgs>
   preVisitSummary?: boolean | Prisma.Appointment$preVisitSummaryArgs<ExtArgs>
+  clinicalNote?: boolean | Prisma.Appointment$clinicalNoteArgs<ExtArgs>
+  prescription?: boolean | Prisma.Appointment$prescriptionArgs<ExtArgs>
+  postVisitSummary?: boolean | Prisma.Appointment$postVisitSummaryArgs<ExtArgs>
   _count?: boolean | Prisma.AppointmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AppointmentIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1526,6 +1967,9 @@ export type $AppointmentPayload<ExtArgs extends runtime.Types.Extensions.Interna
     followUps: Prisma.$FollowUpPayload<ExtArgs>[]
     reminders: Prisma.$ReminderPayload<ExtArgs>[]
     preVisitSummary: Prisma.$PreVisitSummaryPayload<ExtArgs> | null
+    clinicalNote: Prisma.$ClinicalNotePayload<ExtArgs> | null
+    prescription: Prisma.$PrescriptionPayload<ExtArgs> | null
+    postVisitSummary: Prisma.$PostVisitSummaryPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1941,6 +2385,9 @@ export interface Prisma__AppointmentClient<T, Null = never, ExtArgs extends runt
   followUps<T extends Prisma.Appointment$followUpsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$followUpsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FollowUpPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reminders<T extends Prisma.Appointment$remindersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$remindersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReminderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   preVisitSummary<T extends Prisma.Appointment$preVisitSummaryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$preVisitSummaryArgs<ExtArgs>>): Prisma.Prisma__PreVisitSummaryClient<runtime.Types.Result.GetResult<Prisma.$PreVisitSummaryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  clinicalNote<T extends Prisma.Appointment$clinicalNoteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$clinicalNoteArgs<ExtArgs>>): Prisma.Prisma__ClinicalNoteClient<runtime.Types.Result.GetResult<Prisma.$ClinicalNotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  prescription<T extends Prisma.Appointment$prescriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$prescriptionArgs<ExtArgs>>): Prisma.Prisma__PrescriptionClient<runtime.Types.Result.GetResult<Prisma.$PrescriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  postVisitSummary<T extends Prisma.Appointment$postVisitSummaryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Appointment$postVisitSummaryArgs<ExtArgs>>): Prisma.Prisma__PostVisitSummaryClient<runtime.Types.Result.GetResult<Prisma.$PostVisitSummaryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2448,6 +2895,63 @@ export type Appointment$preVisitSummaryArgs<ExtArgs extends runtime.Types.Extens
    */
   include?: Prisma.PreVisitSummaryInclude<ExtArgs> | null
   where?: Prisma.PreVisitSummaryWhereInput
+}
+
+/**
+ * Appointment.clinicalNote
+ */
+export type Appointment$clinicalNoteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClinicalNote
+   */
+  select?: Prisma.ClinicalNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClinicalNote
+   */
+  omit?: Prisma.ClinicalNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClinicalNoteInclude<ExtArgs> | null
+  where?: Prisma.ClinicalNoteWhereInput
+}
+
+/**
+ * Appointment.prescription
+ */
+export type Appointment$prescriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prescription
+   */
+  select?: Prisma.PrescriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prescription
+   */
+  omit?: Prisma.PrescriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrescriptionInclude<ExtArgs> | null
+  where?: Prisma.PrescriptionWhereInput
+}
+
+/**
+ * Appointment.postVisitSummary
+ */
+export type Appointment$postVisitSummaryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostVisitSummary
+   */
+  select?: Prisma.PostVisitSummarySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostVisitSummary
+   */
+  omit?: Prisma.PostVisitSummaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostVisitSummaryInclude<ExtArgs> | null
+  where?: Prisma.PostVisitSummaryWhereInput
 }
 
 /**

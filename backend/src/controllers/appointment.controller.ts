@@ -15,6 +15,9 @@ import {
   cancelAppointment,
   updateAppointmentStatus
 } from "../services/appointment.service.js";
+import { isDoctorOnLeave } from "../services/doctorLeave.service.js";
+import { sendBookingConfirmationEmail, sendAppointmentCancellationEmail } from "../services/email.service.js";
+import { createCalendarEvent } from "../services/calendar.service.js";
 const updateAppointmentStatusSchema = z.object({
   status: z.enum([
     "CONFIRMED",
@@ -154,24 +157,30 @@ export const createNewAppointment = async (
       });
     }
 
-    
+    const onLeave = await isDoctorOnLeave(doctorId, start);
+    if (onLeave) {
+      return res.status(400).json({
+        success: false,
+        message: "The doctor is on leave on the selected date"
+      });
+    }
 
-   const dayOfWeek = start.getDay();
+    const dayOfWeek = start.getDay();
 
-const startTimeOnly = start
-  .toTimeString()
-  .slice(0, 5);
+    const startTimeOnly = start
+      .toTimeString()
+      .slice(0, 5);
 
-const endTimeOnly = end
-  .toTimeString()
-  .slice(0, 5);
+    const endTimeOnly = end
+      .toTimeString()
+      .slice(0, 5);
 
-const availability = await findDoctorAvailability(
-  doctorId,
-  dayOfWeek,
-  startTimeOnly,
-  endTimeOnly
-);
+    const availability = await findDoctorAvailability(
+      doctorId,
+      dayOfWeek,
+      startTimeOnly,
+      endTimeOnly
+    );
     if (!availability) {
       return res.status(400).json({
         success: false,
@@ -191,7 +200,7 @@ const availability = await findDoctorAvailability(
       return res.status(409).json({
         success: false,
         message:
-          "Doctor already has an appointment during the selected time",
+          "This slot was just booked by another patient. Please choose another slot.",
         data: {
           appointmentId: overlapping.id,
           startTime: overlapping.startTime,
@@ -213,12 +222,43 @@ const availability = await findDoctorAvailability(
       }
     );
 
+    // Send confirmation email
+    try {
+      await sendBookingConfirmationEmail({
+        patientEmail: appointment.patient.user.email,
+        patientName: `${appointment.patient.user.firstName} ${appointment.patient.user.lastName}`,
+        doctorName: `${appointment.doctor.user.firstName} ${appointment.doctor.user.lastName}`,
+        appointmentTime: appointment.startTime,
+        type: appointment.type
+      });
+    } catch (e) {
+      console.warn("Failed to send booking confirmation email:", e);
+    }
+
+    // Sync to Google Calendar safely
+    try {
+      await createCalendarEvent(req.user.userId, {
+        summary: `Medical Appointment with Dr. ${appointment.doctor.user.lastName}`,
+        description: `Type: ${appointment.type}. Reason: ${appointment.reason || "N/A"}`,
+        startTime: appointment.startTime,
+        endTime: appointment.endTime
+      });
+    } catch (e) {
+      console.warn("Failed to sync to Google Calendar:", e);
+    }
+
     return res.status(201).json({
       success: true,
       message: "Appointment booked successfully",
       data: appointment
     });
-  } catch (error) {
+  } catch (error: any) {
+    if (error?.code === "P2002") {
+      return res.status(409).json({
+        success: false,
+        message: "This slot was just booked by another patient. Please choose another slot."
+      });
+    }
     next(error);
   }
 };
@@ -461,6 +501,18 @@ export const cancelExistingAppointment = async (
         appointment.id,
         parsed.data.cancellationReason
       );
+
+    try {
+      await sendAppointmentCancellationEmail({
+        patientEmail: cancelledAppointment.patient.user.email,
+        patientName: `${cancelledAppointment.patient.user.firstName} ${cancelledAppointment.patient.user.lastName}`,
+        doctorName: `${cancelledAppointment.doctor.user.firstName} ${cancelledAppointment.doctor.user.lastName}`,
+        appointmentTime: cancelledAppointment.startTime,
+        reason: parsed.data.cancellationReason
+      });
+    } catch (e) {
+      console.warn("Failed to send appointment cancellation email:", e);
+    }
 
     return res.status(200).json({
       success: true,

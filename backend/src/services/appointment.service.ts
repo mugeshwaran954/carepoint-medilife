@@ -90,43 +90,66 @@ export const createAppointment = async (
   createdById: string,
   data: CreateAppointmentInput
 ) => {
-  return prisma.appointment.create({
-    data: {
-      patientId,
-      doctorId,
-      createdById,
-      startTime: data.startTime,
-      endTime: data.endTime,
-      type: data.type ?? "CONSULTATION",
-      reason: data.reason
-    },
-    include: {
-      patient: {
-        include: {
-          user: {
-            select: {
-              id: true,
-              firstName: true,
-              lastName: true,
-              email: true,
-              phone: true
+  return prisma.$transaction(async (tx) => {
+    const overlapping = await tx.appointment.findFirst({
+      where: {
+        doctorId,
+        status: {
+          notIn: ["CANCELLED", "NO_SHOW"]
+        },
+        startTime: {
+          lt: data.endTime
+        },
+        endTime: {
+          gt: data.startTime
+        }
+      }
+    });
+
+    if (overlapping) {
+      const err: any = new Error("This slot was just booked by another patient. Please choose another slot.");
+      err.code = "P2002";
+      throw err;
+    }
+
+    return tx.appointment.create({
+      data: {
+        patientId,
+        doctorId,
+        createdById,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        type: data.type ?? "CONSULTATION",
+        reason: data.reason
+      },
+      include: {
+        patient: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                email: true,
+                phone: true
+              }
             }
           }
-        }
-      },
-      doctor: {
-        include: {
-          user: {
-            select: {
-              id: true,
-              firstName: true,
-              lastName: true,
-              email: true
+        },
+        doctor: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                email: true
+              }
             }
           }
         }
       }
-    }
+    });
   });
 };
 type AppointmentUserRole =

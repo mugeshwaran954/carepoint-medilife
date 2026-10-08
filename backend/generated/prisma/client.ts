@@ -72,6 +72,31 @@ export type Appointment = Prisma.AppointmentModel
  */
 export type PreVisitSummary = Prisma.PreVisitSummaryModel
 /**
+ * Model ClinicalNote
+ * 
+ */
+export type ClinicalNote = Prisma.ClinicalNoteModel
+/**
+ * Model Prescription
+ * 
+ */
+export type Prescription = Prisma.PrescriptionModel
+/**
+ * Model PrescriptionItem
+ * 
+ */
+export type PrescriptionItem = Prisma.PrescriptionItemModel
+/**
+ * Model PostVisitSummary
+ * 
+ */
+export type PostVisitSummary = Prisma.PostVisitSummaryModel
+/**
+ * Model DoctorLeave
+ * 
+ */
+export type DoctorLeave = Prisma.DoctorLeaveModel
+/**
  * Model FollowUp
  * 
  */

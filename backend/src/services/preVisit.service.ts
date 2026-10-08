@@ -1,4 +1,5 @@
 import { prisma } from "../config/prisma.js";
+import { generatePreVisitLLM } from "../integrations/llm/llm.service.js";
 
 export interface CreatePreVisitSummaryInput {
   appointmentId: string;
@@ -21,20 +22,36 @@ export const createPreVisitSummary = async (
     return existing;
   }
 
-  const symptoms =
-    data.symptoms.trim();
+  const symptoms = data.symptoms.trim();
+  const duration = data.duration?.trim() || undefined;
+  const additionalDetails = data.additionalDetails?.trim() || undefined;
 
-  const additionalDetails =
-    data.additionalDetails?.trim() || "";
+  // Try LLM generation first
+  const llmResult = await generatePreVisitLLM({
+    symptoms,
+    duration,
+    additionalDetails
+  });
 
-  const combinedText =
-    `${symptoms} ${additionalDetails}`
-      .toLowerCase();
+  if (llmResult) {
+    return prisma.preVisitSummary.create({
+      data: {
+        appointmentId: data.appointmentId,
+        symptoms,
+        duration: duration || null,
+        additionalDetails: additionalDetails || null,
+        urgencyLevel: llmResult.urgencyLevel,
+        chiefComplaint: llmResult.chiefComplaint,
+        suggestedQuestions: llmResult.suggestedQuestions,
+        generatedBy: "LLM"
+      }
+    });
+  }
 
-  let urgencyLevel:
-    | "LOW"
-    | "MEDIUM"
-    | "HIGH" = "LOW";
+  // Fallback generation if LLM is unavailable or fails
+  const combinedText = `${symptoms} ${additionalDetails || ""}`.toLowerCase();
+
+  let urgencyLevel: "LOW" | "MEDIUM" | "HIGH" = "LOW";
 
   if (
     combinedText.includes("severe") ||
@@ -70,23 +87,13 @@ export const createPreVisitSummary = async (
 
   return prisma.preVisitSummary.create({
     data: {
-      appointmentId:
-        data.appointmentId,
-
+      appointmentId: data.appointmentId,
       symptoms,
-
-      duration:
-        data.duration?.trim() || null,
-
-      additionalDetails:
-        additionalDetails || null,
-
+      duration: duration || null,
+      additionalDetails: additionalDetails || null,
       urgencyLevel,
-
       chiefComplaint,
-
       suggestedQuestions,
-
       generatedBy: "FALLBACK"
     }
   });
